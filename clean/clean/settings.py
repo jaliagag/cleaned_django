@@ -55,7 +55,7 @@ ROOT_URLCONF = 'clean.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/Users/josemanuelfranciscoaliaga/22/clean-django-app/clean/BookRecord/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

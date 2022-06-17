@@ -5,5 +5,5 @@ from django.urls import path
 from BookRecord import views
 
 urlpatterns = [
-    path('',views.home),
+    path('',views.template),
 ]

@@ -7,4 +7,5 @@
 - python manage.py startapp BookRecord
 - Create BookRecord/urls.py and add `home` path
 - In `views.py` create `home` view
+- Add db info to `BookRecord/models.py`
 

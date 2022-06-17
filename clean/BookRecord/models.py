@@ -6,7 +6,7 @@ class User(models.Model):
     name = models.CharField(max_length=40)
     lastname = models.CharField(max_length=40)
     email = models.EmailField()
-    password = models.PasswordField(max_length=40)
+    password = models.CharField(max_length=40)
     shelf = models.CharField(max_length=40)
 
 class Book(models.Model):
@@ -15,7 +15,7 @@ class Book(models.Model):
     author = models.CharField(max_length=40)
     date = models.DateField(max_length=40)
     pages = models.IntegerField()
-    rating = models.RealField()
+    rating = models.IntegerField()
     comments = models.CharField(max_length=40)
     genre = models.CharField(max_length=40)
 
