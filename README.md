@@ -1,3 +1,5 @@
+# Clean django
+
 - django-admin startproject clean
 - cd clean
 - python manage.py migrate
