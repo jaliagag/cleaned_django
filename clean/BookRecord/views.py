@@ -40,6 +40,7 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, 'BookRecord/login.html', {'form': form})
 
+# book model
 class View_books(ListView):
     model = Book
     template_name = 'BookRecord/book_list.html'
@@ -62,3 +63,25 @@ class Delete_book(DeleteView):
     model = Book
     success_url = '/BookRecord/book/list/'
 
+# author model
+class View_authors(ListView):
+    model = Author
+    template_name = 'BookRecord/author_list.html'
+
+class Detail_author(DetailView):
+    model = Author
+    template_name = 'BookRecord/author_detail.html'
+
+class Create_author(CreateView):
+    model = Author
+    success_url = '/BookRecord/author/list/'
+    fields = ['name','lastname','book','wiki','genre']
+
+class Update_author(UpdateView):
+    model = Author
+    success_url = '/BookRecord/author/list/'
+    fields = ['name','lastname','book','wiki','genre']
+
+class Delete_author(DeleteView):
+    model = Author
+    success_url = '/BookRecord/author/list/'

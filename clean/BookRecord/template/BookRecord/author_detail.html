@@ -1,0 +1,14 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+<ul>
+  <li>Nombre: {{ author.name }}</li>
+  <li>Apellido: {{ author.lastname }}</li>
+  <li>Libros: {{ author.book }}</li>
+  <li>Página de Wikipedia: {{ author.wiki }}</li>
+  <li>Género: {{ author.genre }}</li>
+</ul>
+  <button><a href="{% url 'list_authors' %}" style='text-decoration: none; color: #000000' >Volver</a></button>
+{% endblock %}

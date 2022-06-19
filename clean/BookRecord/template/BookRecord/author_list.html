@@ -1,0 +1,24 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+  <p>Lista de autores!</p>
+
+  <ul>
+    {% for i in object_list %}
+    <li>
+      Nombre: <i>{{i.name}} {{i.lastname}}</i>
+      <div>
+        <button><a href="{% url 'update_author' i.id %}">Actualizar información</a></button>
+        <button><a href="{% url 'delete_author' i.id %}">Eliminar</a></button>
+        <button><a href="{% url 'detail_author' i.id %}">Inspeccionar</a></button>
+      </div>
+    </li>
+
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'create_author' %}">Agregar autor</a></p>
+
+{% endblock %}
