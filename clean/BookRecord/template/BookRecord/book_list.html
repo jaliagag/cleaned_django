@@ -1,0 +1,24 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+  <p>Lista de libros!</p>
+
+  <ul>
+    {% for i in object_list %}
+    <li>
+      Título: <i>{{i.title}}</i>
+      <div>
+        <button><a href="{% url 'update_book' i.id %}">Actualizar información</a></button>
+        <button><a href="{% url 'delete_book' i.id %}">Eliminar</a></button>
+        <button><a href="{% url 'detail_book' i.id %}">Inspeccionar</a></button>
+      </div>
+    </li>
+
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'create_book' %}">Agregar libro</a></p>
+
+{% endblock %}

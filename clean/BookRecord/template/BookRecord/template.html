@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>Book Record - tu compañía de lectura</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -19,13 +19,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
                 <a class="navbar-brand" href="{% url 'home' %}">Book Record</a>
+                <a class="navbar-brand" href="https://github.com/jaliagag/cleaned_django" target="_blank">Github</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                       <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'list_books' %}">Libros</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Comentarios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Iniciar sesión</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
 
                     </ul>
@@ -39,7 +40,7 @@
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">¡Bienvenido a Book Record!</h1>
                         <p class="fs-4">Podrás registrar el seguimiento de tu lectura, seguir a autores para no perderte ningún lanzamiento nuevo y encontrar gente con quien compartir ideas y, sobre todo, <i>LIBROS</i></p>
-                        <a class="btn btn-primary btn-lg" href="#!">Iniciar sesión</a>
+                        <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>
                     </div>
                 </div>
             </div>
