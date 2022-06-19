@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class Dev(models.Model):
+    name = models.CharField(max_length=10)
+    test = models.CharField(max_length=10)
+
 class User(models.Model):
     name = models.CharField(max_length=40)
     lastname = models.CharField(max_length=40)
@@ -18,6 +22,7 @@ class Book(models.Model):
     rating = models.IntegerField()
     comments = models.CharField(max_length=40)
     genre = models.CharField(max_length=40)
+    test = models.CharField(max_length=10, default='SOME STRING')
 
     def __str__(self):
         return f'title: {self.title} - \
@@ -27,7 +32,8 @@ class Book(models.Model):
                  pages: {self.pages} - \
                  rating: {self.rating} - \
                  comments: {self.comments} - \
-                 genre: {self.genre}'
+                 genre: {self.genre} \
+                 test: {self.test}'
 
 class Author(models.Model):
     name = models.CharField(max_length=40)
