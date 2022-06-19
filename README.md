@@ -55,5 +55,14 @@
 │   └── template.html
 ```
 
-- 
+- Create login
+  - Create `template/login.html`
+  - Add login url on `BookRecord/urls.py`
+  - On `BookRecord/views.py` make imports
+
+
+
+
+
+
 
