@@ -44,21 +44,3 @@ def testform(request):
 
     return render(request, 'BookRecord/create_book.html', {'my_form': my_form})
 
-def dev(self):
-    if request.method == 'POST':
-        my_form = Book_form(request.POST)
-        if my_form.is_valid():
-            info = my_form.cleaned_data
-            print(info)
-
-            book = Book(title=info['title'],description=info['description'],author=info['author'],date=info['date'],pages=info['pages'],rating=info['rating'],comments=info['comments'],genre = info['genre'])
-            book.save()
-
-            return render(request, 'BookRecord/list_books.html')
-    else:
-        my_form=Book_form()
-
-    return render(request, 'BookRecord/create_book.html', {'my_form': my_form})
-    myTemplate=loader.get_template('BookRecord/dev.html')
-    document = myTemplate.render()
-    return HttpResponse(document)
