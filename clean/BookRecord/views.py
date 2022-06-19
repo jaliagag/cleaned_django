@@ -18,12 +18,23 @@ def template(self):
 
 class View_books(ListView):
     model = Book
-    template_name = 'BookRecord/list_books.html'
+    template_name = 'BookRecord/book_list.html'
+
+class Detail_book(DetailView):
+    model = Book
+    template_name = 'BookRecord/book_detail.html'
 
 class Create_book(CreateView):
     model = Book
     success_url = '/BookRecord/book/list/'
     fields = ['title','description','author','date','pages','rating','comments','genre']
 
+class Update_book(UpdateView):
+    model = Book
+    success_url = '/BookRecord/book/list/'
+    fields = ['title','description','author','date','pages','rating','comments','genre']
 
+class Delete_book(DeleteView):
+    model = Book
+    success_url = '/BookRecord/book/list/'
 

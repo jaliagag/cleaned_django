@@ -8,7 +8,12 @@
   <ul>
     {% for i in object_list %}
     <li>
-      Título: {{i.title}}
+      Título: <i>{{i.title}}</i>
+      <div>
+        <button><a href='#!'>Actualizar</a></button>
+        <button><a href="{% url 'delete_book' i.id %}">Eliminar</a></button>
+        <button><a href='#!'>Inspeccionar</a></button>
+      </div>
     </li>
 
     {% endfor %}

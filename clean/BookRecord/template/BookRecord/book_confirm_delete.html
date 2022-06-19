@@ -1,0 +1,14 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+<h3>Borrar libro</h3>
+
+<form method='POST'>{% csrf_token %}
+  ¿Desea borrar el libro <b>"{{ object.title }}"</b>?
+  <input type='submit' value='Sí'/>
+  <button><a href="{% url 'list_books' %}" style='text-decoration: none; color: #000000' >Cancelar</a></button>
+<form>
+
+{% endblock %}
