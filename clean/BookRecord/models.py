@@ -22,7 +22,6 @@ class Book(models.Model):
     rating = models.IntegerField()
     comments = models.CharField(max_length=40)
     genre = models.CharField(max_length=40)
-    test = models.CharField(max_length=10, default='SOME STRING')
 
     def __str__(self):
         return f'title: {self.title} - \
@@ -32,8 +31,7 @@ class Book(models.Model):
                  pages: {self.pages} - \
                  rating: {self.rating} - \
                  comments: {self.comments} - \
-                 genre: {self.genre} \
-                 test: {self.test}'
+                 genre: {self.genre}'
 
 class Author(models.Model):
     name = models.CharField(max_length=40)
