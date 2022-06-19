@@ -10,7 +10,7 @@
     <li>
       Título: <i>{{i.title}}</i>
       <div>
-        <button><a href='#!'>Actualizar</a></button>
+        <button><a href="{% url 'update_book' i.id %}">Actualizar información</a></button>
         <button><a href="{% url 'delete_book' i.id %}">Eliminar</a></button>
         <button><a href="{% url 'detail_book' i.id %}">Inspeccionar</a></button>
       </div>
