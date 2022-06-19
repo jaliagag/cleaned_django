@@ -1,0 +1,16 @@
+{% extends 'BookRecord/template.html' %}
+{% load static %}
+
+{% block changing_content  %}
+
+<h3> vamo a crear cosas</h3>
+<p> book_form file</p>
+
+<form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Agregar'>
+</form>
+
+
+{% endblock %}

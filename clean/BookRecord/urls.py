@@ -4,6 +4,11 @@
 from django.urls import path
 from BookRecord import views
 
+
 urlpatterns = [
-    path('',views.home),
+    path('',views.template, name='home'),
+
+    path('book/add/', views.Create_book.as_view(), name='create_book'),
+    path('book/list/', views.View_books.as_view(), name='list_books'),
+
 ]
