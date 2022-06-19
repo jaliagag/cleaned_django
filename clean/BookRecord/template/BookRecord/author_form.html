@@ -1,0 +1,17 @@
+{% extends 'BookRecord/template.html' %}
+{% load static %}
+
+{% block changing_content  %}
+
+<h3> vamo a crear cosas</h3>
+
+<form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Agregar'>
+</form>
+
+  <button><a href="{% url 'list_authors' %}" style='text-decoration: none; color: #000000' >Cancelar</a></button>
+
+
+{% endblock %}
