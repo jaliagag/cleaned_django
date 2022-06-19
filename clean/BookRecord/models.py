@@ -19,6 +19,16 @@ class Book(models.Model):
     comments = models.CharField(max_length=40)
     genre = models.CharField(max_length=40)
 
+    def __str__(self):
+        return f'title: {self.title} - \
+                 description: {self.description} - \
+                 author: {self.author} - \
+                 date: {self.date} - \
+                 pages: {self.pages} - \
+                 rating: {self.rating} - \
+                 comments: {self.comments} - \
+                 genre: {self.genre}'
+
 class Author(models.Model):
     name = models.CharField(max_length=40)
     lastname = models.CharField(max_length=40)
