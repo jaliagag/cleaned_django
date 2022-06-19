@@ -5,6 +5,15 @@
 
   <p>Lista de libros!</p>
 
-  <a href="{% url 'create_book' %}">Agregar libro</a>
+  <ul>
+    {% for i in object_list %}
+    <li>
+      Título: {{i.title}}
+    </li>
+
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'create_book' %}">Agregar libro</a></p>
 
 {% endblock %}

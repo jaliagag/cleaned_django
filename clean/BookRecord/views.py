@@ -11,9 +11,6 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 
-def home(request):
-  return HttpResponse('Hola django-coder')
-
 def template(self):
     myTemplate=loader.get_template('BookRecord/template.html')
     document = myTemplate.render()
@@ -25,22 +22,8 @@ class View_books(ListView):
 
 class Create_book(CreateView):
     model = Book
-    success_url = '/BookRecord/create_book.html'
+    success_url = '/BookRecord/book/list/'
     fields = ['title','description','author','date','pages','rating','comments','genre']
 
-def testform(request):
-    if request.method == 'POST':
-        my_form = Book_form(request.POST)
-        if my_form.is_valid():
-            info = my_form.cleaned_data
-            print(info)
 
-            book = Book(title=info['title'],description=info['description'],author=info['author'],date=info['date'],pages=info['pages'],rating=info['rating'],comments=info['comments'],genre = info['genre'])
-            book.save()
-
-            return render(request, 'BookRecord/list_books.html')
-    else:
-        my_form=Book_form()
-
-    return render(request, 'BookRecord/create_book.html', {'my_form': my_form})
 

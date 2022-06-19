@@ -3,18 +3,14 @@
 
 {% block changing_content  %}
 
-<p> vamo a crear cosas</p>
+<h3> vamo a crear cosas</h3>
 <p> book_form file</p>
 
-{% if my_form.errors %}
-<p style='color: red;'>Hubo un error con los datos. Por favor, revísalos</p>
-{% endif %}
-
-<form action='' method='POST'> {% csrf_token %}
-  <table>
-    {{ my_form.as_table }}
-  </table>
+<form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value='Agregar'>
 </form>
 
-<input type='submit' value='Crear'>
+
 {% endblock %}
