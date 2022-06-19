@@ -12,7 +12,7 @@
       <div>
         <button><a href='#!'>Actualizar</a></button>
         <button><a href="{% url 'delete_book' i.id %}">Eliminar</a></button>
-        <button><a href='#!'>Inspeccionar</a></button>
+        <button><a href="{% url 'detail_book' i.id %}">Inspeccionar</a></button>
       </div>
     </li>
 

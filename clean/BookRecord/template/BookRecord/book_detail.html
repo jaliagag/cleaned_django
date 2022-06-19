@@ -3,6 +3,16 @@
 
 {% block changing_content  %}
 
-  <p>Este es un texto que solo aparecerá cuando se llame a este archivo</p>
-
+<ul>
+  <li>Título: {{ book.title }}</li>
+  <li>Descripción: {{ book.description }}</li>
+  <li>Autor: {{ book.author }}</li>
+  <li>Fecha de publicación: {{ book.date }}</li>
+  <li>Páginas: {{ book.pages }}</li>
+  <li>Puntuación: {{ book.rating }}</li>
+  <li>Género: {{ book.genre }}</li>
+</ul>
+<p>
+<a href="{% url 'list_books' %}">Volver</a>
+</p>
 {% endblock %}
