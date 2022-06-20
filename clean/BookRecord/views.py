@@ -16,6 +16,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 
 from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
+from django.contrib.auth.decorators import login_required # validate identity
 
 def template(self):
     myTemplate=loader.get_template('BookRecord/home.html')
@@ -38,9 +39,8 @@ def login_request(request):
                 return render(request,'BookRecord/home.html', {'message':f'Error: datos incorrectos'})
         else:
             return render(request,'BookRecord/home.html', {'message':f'Error: formulario erróneo'})
-    else:
-        form = AuthenticationForm()
-        return render(request, 'BookRecord/login.html', {'form': form})
+    form = AuthenticationForm()
+    return render(request, 'BookRecord/login.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
@@ -64,7 +64,7 @@ class Detail_book(DetailView):
     model = Book
     template_name = 'BookRecord/book_detail.html'
 
-class Create_book(LoginRequiredMixin, CreateView):
+class Create_book(LoginRequiredMixin, CreateView): # needs to be logged in
     model = Book
     success_url = '/BookRecord/book/list/'
     fields = ['title','description','author','date','pages','rating','comments','genre']
