@@ -8,6 +8,7 @@ from BookRecord import views
 urlpatterns = [
     path('',views.template, name='home'),
     path('login/', views.login_request, name='login'),
+    path('register/', views.register, name='register'),
 
     path('book/add/', views.Create_book.as_view(), name='create_book'),
     path('book/list/', views.View_books.as_view(), name='list_books'),

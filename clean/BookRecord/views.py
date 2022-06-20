@@ -12,11 +12,11 @@ from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 
 # login
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, logout, authenticate
 
 def template(self):
-    myTemplate=loader.get_template('BookRecord/template.html')
+    myTemplate=loader.get_template('BookRecord/home.html')
     document = myTemplate.render()
     return HttpResponse(document)
 
@@ -30,15 +30,28 @@ def login_request(request):
             user = authenticate(username=name,password=passw)
 
             if user is not None:
-                login(request, user)
-                return render(request,'BookRecord/template.html', {'message':f'Bienvenido {name}'})
+                login(request, user) # user exists and logs them in
+                return render(request,'BookRecord/home.html', {'message':f'Bienvenido {name}'})
             else:
-                return render(request,'BookRecord/template.html', {'message':f'Error: datos incorrectos'})
+                return render(request,'BookRecord/home.html', {'message':f'Error: datos incorrectos'})
         else:
-            return render(request,'BookRecord/template.html', {'message':f'Error: formulario erróneo'})
+            return render(request,'BookRecord/home.html', {'message':f'Error: formulario erróneo'})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'BookRecord/login.html', {'form': form})
 
-    form = AuthenticationForm()
-    return render(request, 'BookRecord/login.html', {'form': form})
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request,'BookRecord/home.html', {'message':'Usuario creado con éxito'})
+        else:
+            return render(request,'BookRecord/home.html', {'message':'Error en el formulario'})
+    else:
+        form = UserRegisterForm()
+        return render(request,'BookRecord/register.html',{'form':form})
 
 # book model
 class View_books(ListView):
