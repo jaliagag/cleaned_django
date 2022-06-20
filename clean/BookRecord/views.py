@@ -15,6 +15,8 @@ from django.views.generic.edit import DeleteView
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, logout, authenticate
 
+from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
+
 def template(self):
     myTemplate=loader.get_template('BookRecord/home.html')
     document = myTemplate.render()
@@ -62,17 +64,17 @@ class Detail_book(DetailView):
     model = Book
     template_name = 'BookRecord/book_detail.html'
 
-class Create_book(CreateView):
+class Create_book(LoginRequiredMixin, CreateView):
     model = Book
     success_url = '/BookRecord/book/list/'
     fields = ['title','description','author','date','pages','rating','comments','genre']
 
-class Update_book(UpdateView):
+class Update_book(LoginRequiredMixin, UpdateView):
     model = Book
     success_url = '/BookRecord/book/list/'
     fields = ['title','description','author','date','pages','rating','comments','genre']
 
-class Delete_book(DeleteView):
+class Delete_book(LoginRequiredMixin, DeleteView):
     model = Book
     success_url = '/BookRecord/book/list/'
 
@@ -85,16 +87,16 @@ class Detail_author(DetailView):
     model = Author
     template_name = 'BookRecord/author_detail.html'
 
-class Create_author(CreateView):
+class Create_author(LoginRequiredMixin, CreateView):
     model = Author
     success_url = '/BookRecord/author/list/'
     fields = ['name','lastname','book','wiki','genre']
 
-class Update_author(UpdateView):
+class Update_author(LoginRequiredMixin, UpdateView):
     model = Author
     success_url = '/BookRecord/author/list/'
     fields = ['name','lastname','book','wiki','genre']
 
-class Delete_author(DeleteView):
+class Delete_author(LoginRequiredMixin, DeleteView):
     model = Author
     success_url = '/BookRecord/author/list/'
