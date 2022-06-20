@@ -3,11 +3,13 @@
 
 from django.urls import path
 from BookRecord import views
-
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('',views.template, name='home'),
     path('login/', views.login_request, name='login'),
+    path('register/', views.register, name='register'),
+    path('logout/', LogoutView.as_view(template_name='BookRecord/logout.html'), name='logout'),
 
     path('book/add/', views.Create_book.as_view(), name='create_book'),
     path('book/list/', views.View_books.as_view(), name='list_books'),
