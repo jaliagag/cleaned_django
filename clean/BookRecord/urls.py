@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.login_request, name='login'),
     path('register/', views.register, name='register'),
     path('logout/', LogoutView.as_view(template_name='BookRecord/logout.html'), name='logout'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
 
     path('book/add/', views.Create_book.as_view(), name='create_book'),
     path('book/list/', views.View_books.as_view(), name='list_books'),

@@ -18,6 +18,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
 from django.contrib.auth.decorators import login_required # validate identity
 
+#@login_required
 def template(self):
     myTemplate=loader.get_template('BookRecord/home.html')
     document = myTemplate.render()
@@ -54,6 +55,27 @@ def register(request):
     else:
         form = UserRegisterForm()
         return render(request,'BookRecord/register.html',{'form':form})
+
+@login_required
+def edit_profile(request):
+    username = request.user
+    if request.method == 'POST':
+        my_form = UserEditForm(request.POST)
+        if my_form.is_valid():
+            info = my_form.cleaned_data
+
+            username.email = info['email']
+            username.password1 = info['password1']
+            username.password2 = info['password1']
+            username.first_name = info['first_name']
+            username.last_name = info['last_name']
+            username.save()
+
+            return render(request,'BookRecord/home.html', {'username':username, 'message': f'Datos actualizados con éxito para {username}'})
+    else:
+        my_form = UserEditForm(initial={'email':username.email})
+    
+    return render(request, 'BookRecord/edit_profile.html', {'my_form':my_form,'username':username})
 
 # book model
 class View_books(ListView):
