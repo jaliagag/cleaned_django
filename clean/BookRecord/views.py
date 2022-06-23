@@ -99,6 +99,7 @@ class Update_book(LoginRequiredMixin, UpdateView):
 class Delete_book(LoginRequiredMixin, DeleteView):
     model = Book
     success_url = '/BookRecord/book/list/'
+    # success_url = reverse_lazy('list_books')
 
 # author model
 class View_authors(ListView):

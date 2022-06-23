@@ -11,6 +11,8 @@
     {{ my_form.as_table }}
   </table>
   <input type='submit' value='Editar'>
+  <br>
+  <button><a href="{% url 'logout' %}" style='text-decoration: none; color: #000000' >Cerrar sesion</a></button>
 
 </form>
 {% endblock %}

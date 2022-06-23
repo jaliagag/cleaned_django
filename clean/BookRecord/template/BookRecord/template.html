@@ -27,9 +27,17 @@
                       <li class="nav-item"><a class="nav-link" href="{% url 'list_books' %}">Libros</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'list_authors' %}">Autores</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Comentarios</a></li>
+
+                      {% if not request.user.is_authenticated %}
                       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
-                      <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Crear usuario</a></li>
-                      <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
+                      {% endif %}
+
+                      {% if request.user.is_authenticated %}
+                      <img src="{{(Avatar.objects.filter(user = request.user.id))[0].image.url}}" />
+                      <li class="nav-item"><span class="nav-link"">Hola {{ user.username }}</span></li>
+                      {% endif %}
+                      <!--<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Crear usuario</a></li>-->
+                      <!--<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>-->
                       <li class="nav-item"><a class="nav-link" href="{% url 'edit_profile' %}">Modificar Perfil</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
 
