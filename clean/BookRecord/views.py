@@ -18,11 +18,16 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
 from django.contrib.auth.decorators import login_required # validate identity
 
-#@login_required
-def template(self):
-    myTemplate=loader.get_template('BookRecord/home.html')
-    document = myTemplate.render()
-    return HttpResponse(document)
+@login_required
+def template(request):
+    #avatars = Avatar.objects.filter(user=request.user.id).first()
+    avatars = Avatar.objects.filter(user=request.user.id)
+
+    return render(request, 'BookRecord/home.html' )
+    #return render(request, 'BookRecord/home.html', {'url':avatars[0].image.url} )
+#    myTemplate=loader.get_template('BookRecord/home.html')
+#    document = myTemplate.render()
+#    return HttpResponse(document)
 
 def login_request(request):
     if request.method == 'POST':

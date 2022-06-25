@@ -8,7 +8,7 @@
 <form method='POST'>{% csrf_token %}
   ¿Desea borrar el libro <b>"{{ object.title }}"</b>?
   <input type='submit' value='Sí'/>
-  <button><a href="{% url 'list_books' %}" style='text-decoration: none; color: #000000' >Cancelar</a></button>
+  <button><a href="{% url 'list_books' %}" style='text-decoration: none; color: #000000' >No</a></button>
 <form>
 
 {% endblock %}
