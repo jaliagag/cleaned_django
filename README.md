@@ -60,6 +60,10 @@
   - Add login url on `BookRecord/urls.py`
   - On `BookRecord/views.py` make imports
 
+## Usage
+
+- Date format: `1990-01-01`
+
 
 
 

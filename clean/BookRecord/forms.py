@@ -13,7 +13,7 @@ class User_form(forms.Form):
     shelf = forms.CharField()
 
 class Book_form(forms.Form):
-    title = forms.CharField()
+    title = forms.CharField(label="Título")
     description = forms.CharField()
     author = forms.CharField()
     date = forms.DateField()

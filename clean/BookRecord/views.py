@@ -18,10 +18,10 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
 from django.contrib.auth.decorators import login_required # validate identity
 
-@login_required
+#@login_required
 def template(request):
     #avatars = Avatar.objects.filter(user=request.user.id).first()
-    avatars = Avatar.objects.filter(user=request.user.id)
+    #avatars = Avatar.objects.filter(user=request.user.id)
 
     return render(request, 'BookRecord/home.html' )
     #return render(request, 'BookRecord/home.html', {'url':avatars[0].image.url} )
@@ -54,9 +54,9 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             form.save()
-            return render(request,'BookRecord/home.html', {'message':'Usuario creado con éxito'})
+            return render(request,'BookRecord/home.html', {'message': f'Usuario {username} creado con éxito'})
         else:
-            return render(request,'BookRecord/home.html', {'message':'Error en el formulario'})
+            return render(request,'BookRecord/home.html', {'message':'Error - no se pudo crear el usuario'})
     else:
         form = UserRegisterForm()
         return render(request,'BookRecord/register.html',{'form':form})
