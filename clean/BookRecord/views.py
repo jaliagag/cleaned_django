@@ -53,7 +53,7 @@ def register(request):
             form.save()
             return render(request,'BookRecord/home.html', {'message': f'Usuario {username} creado con éxito'})
         else:
-            return render(request,'BookRecord/home.html', {'message':'Error - no se pudo crear el usuario'})
+            return render(request,'BookRecord/home.html', {'message':'Error - no se pudo crear el usuario (largo mínimo de la contraseña: 9 caracteres)'})
     else:
         form = UserRegisterForm()
         return render(request,'BookRecord/register.html',{'form':form})
