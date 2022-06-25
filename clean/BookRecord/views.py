@@ -25,9 +25,6 @@ def template(request):
 
     return render(request, 'BookRecord/home.html' )
     #return render(request, 'BookRecord/home.html', {'url':avatars[0].image.url} )
-#    myTemplate=loader.get_template('BookRecord/home.html')
-#    document = myTemplate.render()
-#    return HttpResponse(document)
 
 def login_request(request):
     if request.method == 'POST':
