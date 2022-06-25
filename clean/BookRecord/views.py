@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+
 from BookRecord.models import *
 from BookRecord.forms import *
 
@@ -92,9 +93,10 @@ def edit_profile(request):
 def create_avatar(request):
     if request.method == 'POST':
         my_form = Avatar_form(request.POST, request.FILES)
-        if my_form.is_valid:
-            user = User.objects.get(username=request.user)
-            avatar = Avatar(user=user,image=my_form.cleaned_data['image'])
+        if my_form.is_valid():
+            u = User.objects.get(username=request.user)
+            i = my_form.cleaned_data['image']
+            avatar = Avatar(user=u,image=i)
             avatar.save()
             message = 'Avatar subido con éxito'
             return render(request,'BookRecord/home.html', {'message': message})
