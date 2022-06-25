@@ -22,8 +22,17 @@ from django.contrib.auth.decorators import login_required # validate identity
 def template(request):
     #avatars = Avatar.objects.filter(user=request.user.id).first()
     #avatars = Avatar.objects.filter(user=request.user.id)
-
-    return render(request, 'BookRecord/home.html' )
+    if request.user.is_authenticated:
+        if len(Avatar.objects.filter(user=request.user.id)) == 0:
+            print(Avatar.objects.filter(user=request.user.id))
+            message = 'no hay nada'
+            return render(request, 'BookRecord/home.html', {'message': message })
+        else:
+            message = Avatar.objects.filter(user=request.user.id)
+            return render(request, 'BookRecord/home.html', {'message': message })
+    else:
+        message = 'quien sos?'
+        return render(request, 'BookRecord/home.html', {'message': message })
     #return render(request, 'BookRecord/home.html', {'url':avatars[0].image.url} )
 
 def login_request(request):
@@ -78,6 +87,21 @@ def edit_profile(request):
         my_form = UserEditForm(initial={'email':username.email})
     
     return render(request, 'BookRecord/edit_profile.html', {'my_form':my_form,'username':username})
+
+@login_required
+def create_avatar(request):
+    if request.method == 'POST':
+        my_form = Avatar_form(request.POST, request.FILES)
+        if my_form.is_valid:
+            user = User.objects.get(username=request.user)
+            avatar = Avatar(user=user,image=my_form.cleaned_data['image'])
+            avatar.save()
+            message = 'Avatar subido con éxito'
+            return render(request,'BookRecord/home.html', {'message': message})
+    else:
+        my_form = Avatar_form()
+
+    return render(request,'BookRecord/create_avatar.html', {'my_form':my_form})
 
 # book model
 class View_books(ListView):

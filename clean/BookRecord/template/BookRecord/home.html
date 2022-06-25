@@ -3,6 +3,20 @@
 
 {% block changing_content  %}
 
-<h2>{{ message }}</h2>
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-5 fw-bold">¡Bienvenido a Book Record!</h1>
+                <p class="fs-4">Podrás registrar el seguimiento de tu lectura, seguir a autores para no perderte ningún lanzamiento nuevo y encontrar gente con quien compartir ideas y, sobre todo, <i>LIBROS</i></p>
+                {% if not request.user.is_authenticated %}
+                  <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<h2> &emsp; {{ message }}</h2>
 
 {% endblock %}

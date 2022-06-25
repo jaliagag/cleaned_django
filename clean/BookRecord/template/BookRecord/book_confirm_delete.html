@@ -3,7 +3,15 @@
 
 {% block changing_content  %}
 
-<h3>Borrar libro</h3>
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+              <h1 class="display-5 fw-bold">Borrar regsitro</h1>
+            </div>
+        </div>
+    </div>
+</header>
 
 <form method='POST'>{% csrf_token %}
   ¿Desea borrar el libro <b>"{{ object.title }}"</b>?

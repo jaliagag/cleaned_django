@@ -23,4 +23,6 @@ urlpatterns = [
     path('author/rm/<pk>', views.Delete_author.as_view(), name='delete_author'),
     path('author/<pk>', views.Detail_author.as_view(), name='detail_author'),
     path('author/edit/<pk>', views.Update_author.as_view(), name='update_author'),
+
+    path('avatar_create',views.create_avatar,name='create_avatar'),
 ]
