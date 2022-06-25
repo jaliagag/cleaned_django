@@ -6,6 +6,9 @@
 <form action='' method='POST'>{% csrf_token %}
   {{form.as_p}}
   <button type='submit'>Iniciar sesión</button>
+  <br>
+  <button><a href="{% url 'register' %}" style='text-decoration: none; color: #000000' >Crear usuario</a></button>
+
 </form>
 
 {% endblock %}

@@ -18,10 +18,16 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin # block view when not logged in
 from django.contrib.auth.decorators import login_required # validate identity
 
-def template(self):
-    myTemplate=loader.get_template('BookRecord/home.html')
-    document = myTemplate.render()
-    return HttpResponse(document)
+@login_required
+def template(request):
+    #avatars = Avatar.objects.filter(user=request.user.id).first()
+    avatars = Avatar.objects.filter(user=request.user.id)
+
+    return render(request, 'BookRecord/home.html' )
+    #return render(request, 'BookRecord/home.html', {'url':avatars[0].image.url} )
+#    myTemplate=loader.get_template('BookRecord/home.html')
+#    document = myTemplate.render()
+#    return HttpResponse(document)
 
 def login_request(request):
     if request.method == 'POST':
@@ -55,6 +61,27 @@ def register(request):
         form = UserRegisterForm()
         return render(request,'BookRecord/register.html',{'form':form})
 
+@login_required
+def edit_profile(request):
+    username = request.user
+    if request.method == 'POST':
+        my_form = UserEditForm(request.POST)
+        if my_form.is_valid():
+            info = my_form.cleaned_data
+
+            username.email = info['email']
+            username.password1 = info['password1']
+            username.password2 = info['password1']
+            username.first_name = info['first_name']
+            username.last_name = info['last_name']
+            username.save()
+
+            return render(request,'BookRecord/home.html', {'username':username, 'message': f'Datos actualizados con éxito para {username}'})
+    else:
+        my_form = UserEditForm(initial={'email':username.email})
+    
+    return render(request, 'BookRecord/edit_profile.html', {'my_form':my_form,'username':username})
+
 # book model
 class View_books(ListView):
     model = Book
@@ -77,6 +104,7 @@ class Update_book(LoginRequiredMixin, UpdateView):
 class Delete_book(LoginRequiredMixin, DeleteView):
     model = Book
     success_url = '/BookRecord/book/list/'
+    # success_url = reverse_lazy('list_books')
 
 # author model
 class View_authors(ListView):
