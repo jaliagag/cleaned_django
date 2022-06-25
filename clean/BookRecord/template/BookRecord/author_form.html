@@ -3,11 +3,24 @@
 
 {% block changing_content  %}
 
-<h3> vamo a crear cosas</h3>
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+              <h1 class="display-5 fw-bold">Agregar autor</h1>
+                {% if not request.user.is_authenticated %}
+                  <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
 
 <form method='POST'>
   {% csrf_token %}
-  {{ form.as_p }}
+  <table>
+  {{ form.as_table }}
+  </table>
   <input type='submit' value='Agregar'>
 </form>
 

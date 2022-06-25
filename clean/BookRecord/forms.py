@@ -4,6 +4,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from BookRecord.models import Avatar
 
 class User_form(forms.Form):
     name = forms.CharField()
@@ -57,3 +58,10 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ['first_name','last_name','email','password1','password2']
         help_texts = {k:'' for k in fields}
+
+class Avatar_form(forms.Form):
+    image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}), required=True)
+    
+    class Meta:
+        model = Avatar
+        fields = ['image']

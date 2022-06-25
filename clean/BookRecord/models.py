@@ -61,10 +61,6 @@ class Shelf(models.Model):
                  owner: {self.owner} - \
                  books: {self.books}'
 
-#class
-
-#class Imagen(models.Model): # image is related to user - model related to a model
-#    user = model.ForeignKey(User, on_delete=models.CASCADE)
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='avatars', null=True, blank=True)

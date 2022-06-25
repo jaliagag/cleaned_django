@@ -34,7 +34,6 @@
                       {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'edit_profile' %}">Hola {{ user.username }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
-
                       {% endif %}
                         <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
 
@@ -42,18 +41,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <div class="m-4 m-lg-5">
-                        <h1 class="display-5 fw-bold">¡Bienvenido a Book Record!</h1>
-                        <p class="fs-4">Podrás registrar el seguimiento de tu lectura, seguir a autores para no perderte ningún lanzamiento nuevo y encontrar gente con quien compartir ideas y, sobre todo, <i>LIBROS</i></p>
-                        <!--<a class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>-->
-                    </div>
-                </div>
-            </div>
-        </header>
         <!-- Page Content-->
           {% block changing_content %}
 

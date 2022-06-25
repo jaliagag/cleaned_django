@@ -1,1 +1,4 @@
 clean/users
+clean/BookRecord/migrations/
+clean/BookRecord/__pycache__/
+clean/__pycache__
