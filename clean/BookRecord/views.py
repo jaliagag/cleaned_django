@@ -129,6 +129,19 @@ class Delete_book(LoginRequiredMixin, DeleteView):
     success_url = '/BookRecord/book/list/'
     # success_url = reverse_lazy('list_books')
 
+def search_book(request):
+    return render(request, 'BookRecord/search_book.html')
+
+def search_book_action(request):
+    if request.GET['title']:
+        title = request.GET['title']
+        results = Book.objects.filter(title__icontains=title)
+        return render(request,'BookRecord/search_book_results.html',{'results':results,'title':title})
+    else:
+        answer = 'No se enviaron datos'
+
+    return HttpResponse(answer)
+
 # author model
 class View_authors(ListView):
     model = Author
@@ -151,3 +164,18 @@ class Update_author(LoginRequiredMixin, UpdateView):
 class Delete_author(LoginRequiredMixin, DeleteView):
     model = Author
     success_url = '/BookRecord/author/list/'
+
+def search_author(request):
+    return render(request, 'BookRecord/search_author.html')
+
+def search_author_action(request):
+    if request.GET['name']:
+        name = request.GET['name']
+        results = Author.objects.filter(name__icontains=name)
+        #print(len(results))
+        print(name)
+        return render(request,'BookRecord/search_author_results.html',{'results':results,'name':name})
+    else:
+        answer = 'No se enviaron datos'
+
+    return HttpResponse(answer)
