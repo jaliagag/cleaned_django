@@ -4,7 +4,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-WSGIT_APPLICATION = 'clean.wsgi.local.application'
+WSGI_APPLICATION = 'clean.wsgi.local.application'
 
 DATABASES = {
     'default': {
