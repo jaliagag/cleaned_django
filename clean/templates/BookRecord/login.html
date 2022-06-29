@@ -1,0 +1,24 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-5 fw-bold">Inicio de sesión</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<form action='' method='POST'>{% csrf_token %}
+  {{form.as_p}}
+  <button type='submit'>Iniciar sesión</button>
+  <br>
+  <button><a href="{% url 'register' %}" style='text-decoration: none; color: #000000' >Crear usuario</a></button>
+
+</form>
+
+{% endblock %}

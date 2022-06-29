@@ -1,1 +1,1 @@
-web: gunicorn jaliagaSite.wsgi
+web: gunicorn BookRecord.wsgi.prod --log-file -

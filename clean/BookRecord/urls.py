@@ -5,6 +5,9 @@ from django.urls import path
 from BookRecord import views
 from django.contrib.auth.views import LogoutView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('',views.template, name='home'),
     path('login/', views.login_request, name='login'),
@@ -29,4 +32,4 @@ urlpatterns = [
     path('author/edit/<pk>', views.Update_author.as_view(), name='update_author'),
 
     path('avatar_create',views.create_avatar,name='create_avatar'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
