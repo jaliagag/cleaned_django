@@ -1,1 +1,1 @@
-web: gunicorn BookRecord.wsgi.prod --log-file -
+web: gunicorn BookRecord.wsgi.production --log-file -
