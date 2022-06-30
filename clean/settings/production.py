@@ -5,7 +5,7 @@ from .base import *
 import dj_database_url
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-DEBUG = False
+DEBUG = True
 
 INSTALLED_APPS += ('gunicorn',)
 
