@@ -3,3 +3,4 @@ clean/BookRecord/migrations/
 clean/BookRecord/__pycache__/
 clean/__pycache__
 debug/
+*__pycache__*
