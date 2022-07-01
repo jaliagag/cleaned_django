@@ -2,10 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-class Dev(models.Model):
-    name = models.CharField(max_length=10)
-    test = models.CharField(max_length=10)
-
 class User(models.Model):
     name = models.CharField(max_length=40)
     lastname = models.CharField(max_length=40)
