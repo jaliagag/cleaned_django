@@ -21,7 +21,7 @@ class User(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=40)
-    description = models.CharField(max_length=400)
+    description = models.CharField(max_length=200)
     author = models.CharField(max_length=40)
     date = models.DateField(max_length=40)
     pages = models.IntegerField()
