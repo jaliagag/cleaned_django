@@ -20,13 +20,13 @@ SECRET_KEY = 'django-insecure-*1lpk4=3n^pdh+26_2dwg)$^!qp++5$ky+fpzxd&i0v#)61n$!
 # Application definition
 
 INSTALLED_APPS = [
+    'BookRecord',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'BookRecord',
 ]
 
 MIDDLEWARE = [
