@@ -1,0 +1,41 @@
+{% extends "BookRecord/template.html" %}
+{% load static %}
+
+{% block changing_content  %}
+
+<header class="py-5">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+              <h1 class="display-5 fw-bold">José Manuel Francisco Aliaga</h1>
+                {% if not request.user.is_authenticated %}
+                  <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<div style="max-width: 700px; margin: auto;">
+<p>Vivo en la ciudad de Córdoba, Argentina. Soy traductor de inglés, pero en 2018 arranqué mi carrera en IT en DXC. Formaba parte de un equipo que se encargaba de monitorear alertas de servidores de nuestros clientes.</p>
+
+<p>Después de liderar el equipo durante casi un año, tuve la suerte de pasar a un equipo técnico como Linux SA nivel 1. Aprendí mucho sobre sistemas UNIX y arranqué a estudiar certificaciones.</p>
+
+<p>Hoy en día estoy trabajando para Intive (antes SimTLIX) como consultor DevSecOps, donde cada día aprendo algo nuevo y se me presentan nuevos desafíos para que el código de los desarrolladores sea más seguro (dejen de poner credenciales hardcodeadas, por favor!)</p>
+
+<p>En un futuro voy a seguir mis estudios para reemplazar mis habilidades de scripting con bash con scripting en python e irme más para el lado de la ciberseguridad.</p>
+
+<p>Mis hobbies incluyen:</p>
+<ul>
+  <li>Leer principalmente ciencia ficción y fantasía. Actualmente estoy leyendo la serie <i>The Wheel of Time</i>. Mi libro favorito es <a href="https://www.bookdepository.com/Seveneves-Neal-Stephenson/9780062334510?ref=grid-view&qid=1656931943704&sr=1-2" target="_blank"><i>Seveneves</i></a>, de Neal Stephenson</li>
+  <li>Ver películas y series. Película favorita: <a href="https://www.imdb.com/title/tt0816692/?ref_=nv_sr_srsg_0" target="_blank">Interestelar</a>; mi serie favorita es <a href="https://www.imdb.com/title/tt0306414/?ref_=fn_al_tt_1" target="_blank">The Wire</a></li>
+  <li>Jugar a la compu</li>
+  <li>Cuadro: Club Atlético Talleres</li>
+  <li>Salir a correr</li>
+</ul>
+
+<a style="text-decoration: none; color: black;" href="https://drive.google.com/file/d/1pQwf-yh_yRC1Q0pkmk3W1COZOlmp7By9/view?usp=sharing" target="_blank">Mi CV actualizado</a>
+
+</div>
+
+{% endblock %}

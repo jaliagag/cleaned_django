@@ -57,6 +57,17 @@ class Shelf(models.Model):
                  owner: {self.owner} - \
                  books: {self.books}'
 
+class Comment(models.Model):
+    title = models.CharField(max_length=40)
+    book = models.CharField(max_length=40)
+    rating = models.IntegerField()
+    comment = models.CharField(max_length=200)
+    def __str__(self):
+        return f'title: {self.title} - \
+                 book: {self.book} - \
+                 rating: {self.rating} - \
+                 comment: {self.comment}'
+
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='avatars', null=True, blank=True)

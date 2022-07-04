@@ -25,7 +25,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                       <li class="nav-item"><a class="nav-link" href="{% url 'list_books' %}">Libros</a></li>
                       <li class="nav-item"><a class="nav-link" href="{% url 'list_authors' %}">Autores</a></li>
-                      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Comentarios</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'list_comments' %}">Comentarios</a></li>
 
                       {% if not request.user.is_authenticated %}
                       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a></li>
@@ -35,7 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'edit_profile' %}">Hola {{ user.username }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
                       {% endif %}
-                        <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about_me' %}">Sobre mí</a></li>
 
                     </ul>
                 </div>

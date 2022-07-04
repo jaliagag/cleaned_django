@@ -31,5 +31,15 @@ urlpatterns = [
     path('author/<pk>', views.Detail_author.as_view(), name='detail_author'),
     path('author/edit/<pk>', views.Update_author.as_view(), name='update_author'),
 
-    path('avatar_create',views.create_avatar,name='create_avatar'),
+
+    path('comment/search/', views.search_comment, name='search_comment'),
+    path('search/comment/',views.search_comment_action),
+    path('comment/add/', views.Create_comment.as_view(), name='create_comment'),
+    path('comment/list/', views.View_comments.as_view(), name='list_comments'),
+    path('comment/rm/<pk>', views.Delete_comment.as_view(), name='delete_comment'),
+    path('comment/<pk>', views.Detail_comment.as_view(), name='detail_comment'),
+    path('comment/edit/<pk>', views.Update_comment.as_view(), name='update_comment'),
+
+    path('avatar_create/',views.create_avatar,name='create_avatar'),
+    path('about_me/',views.aboutme,name='about_me'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

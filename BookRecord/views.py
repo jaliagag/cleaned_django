@@ -139,7 +139,6 @@ def search_book_action(request):
         return render(request,'BookRecord/search_book_results.html',{'results':results,'title':title})
     else:
         answer = 'No se enviaron datos'
-
     return HttpResponse(answer)
 
 # author model
@@ -177,5 +176,49 @@ def search_author_action(request):
         return render(request,'BookRecord/search_author_results.html',{'results':results,'name':name})
     else:
         answer = 'No se enviaron datos'
-
     return HttpResponse(answer)
+
+# comment model
+class View_comments(ListView):
+    model = Comment
+    template_name = 'BookRecord/comment_list.html'
+
+class Detail_comment(DetailView):
+    model = Comment
+    template_name = 'BookRecord/comment_detail.html'
+
+class Create_comment(LoginRequiredMixin, CreateView):
+    model = Comment
+    success_url = '/BookRecord/comment/list/'
+    fields = ['title','book','rating','comment']
+
+class Update_comment(LoginRequiredMixin, UpdateView):
+    model = Comment
+    success_url = '/BookRecord/comment/list/'
+    fields = ['title','book','rating','comment']
+
+class Delete_comment(LoginRequiredMixin, DeleteView):
+    model = Comment
+    success_url = '/BookRecord/comment/list/'
+
+def search_comment(request):
+    return render(request, 'BookRecord/search_comment.html')
+
+def search_comment_action(request):
+
+    if request.GET['title']:
+        title = request.GET['title']
+        results = Comment.objects.filter(title__icontains=title)
+        return render(request,'BookRecord/search_comment_results.html',{'results':results,'title':title})
+#    if request.GET['book']:
+#        book = request.GET['book']
+#        results = Comment.objects.filter(book__icontains=name)
+#        return render(request,'BookRecord/search_comment_results.html',{'results':results,'book':book})
+    else:
+        answer = 'No se enviaron datos'
+    return HttpResponse(answer)
+
+# About
+
+def aboutme(request):
+    return render(request, 'BookRecord/about_me.html')

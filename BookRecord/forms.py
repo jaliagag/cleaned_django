@@ -35,6 +35,11 @@ class Shelf_form(forms.Form):
     owner = forms.CharField()
     books = forms.CharField()
 
+class Shelf_comment(forms.Form):
+    title = forms.CharField()
+    book = forms.CharField()
+    rating = forms.IntegerField()
+    comment = forms.CharField()
 #class
 
 class UserRegisterForm(UserCreationForm):
